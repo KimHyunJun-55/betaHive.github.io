@@ -6,25 +6,134 @@
     <title>BetaHive | 사이드 프로젝트 테스팅 플랫폼</title>
     <style>
       /* Disquiet-inspired Minimal Style */
+      :root {
+        --primary-color: #0066ff;
+        --sidebar-width: 250px;
+      }
       body {
         font-family: "Helvetica Neue", Arial, sans-serif;
         line-height: 1.6;
         color: #333;
         background: #f9f9f9;
         margin: 0;
-        padding: 20px;
-        max-width: 1200px;
-        margin: 0 auto;
+        padding: 0;
       }
+      /* 헤더 스타일 */
       header {
         border-bottom: 1px solid #eee;
-        padding: 20px 0;
-        margin-bottom: 40px;
+        padding: 15px 30px;
+        background: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
       }
       .logo {
         font-size: 24px;
         font-weight: 700;
         color: #000;
+      }
+      .nav-main {
+        display: flex;
+        gap: 25px;
+      }
+      .nav-main a {
+        text-decoration: none;
+        color: #333;
+        font-size: 15px;
+      }
+      .user-actions {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+      }
+      .btn-login {
+        background: none;
+        border: 1px solid #ddd;
+        padding: 8px 20px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all 0.2s;
+      }
+      .btn-login:hover {
+        background: #f0f0f0;
+      }
+      .user-avatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: #f0f0f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+
+      /* 사이드바 + 메인 컨텐츠 레이아웃 */
+      .container {
+        display: flex;
+        min-height: calc(100vh - 70px);
+      }
+      .sidebar {
+        width: var(--sidebar-width);
+        background: white;
+        border-right: 1px solid #eee;
+        padding: 25px;
+        transition: all 0.3s;
+      }
+      .sidebar-collapsed {
+        margin-left: calc(-1 * var(--sidebar-width));
+      }
+      .sidebar h3 {
+        font-size: 16px;
+        margin-top: 0;
+        margin-bottom: 15px;
+        color: #666;
+      }
+      .sidebar-category {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 30px 0;
+      }
+      .sidebar-category li {
+        margin-bottom: 10px;
+      }
+      .sidebar-category a {
+        text-decoration: none;
+        color: #333;
+        font-size: 14px;
+        display: block;
+        padding: 8px 0;
+      }
+      .sidebar-category a:hover {
+        color: var(--primary-color);
+      }
+      .main-content {
+        flex: 1;
+        padding: 30px;
+      }
+
+      /* 프로젝트 그리드 (기존 스타일 유지) */
+      .filter-bar {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+      }
+      .filter-btn {
+        background: none;
+        border: 1px solid #ddd;
+        padding: 8px 15px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      .filter-btn.active {
+        background: #000;
+        color: white;
       }
       .project-grid {
         display: grid;
@@ -70,82 +179,133 @@
         font-size: 12px;
         margin-top: 10px;
       }
-      .filter-bar {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 30px;
-      }
-      .filter-btn {
-        background: none;
-        border: 1px solid #ddd;
-        padding: 8px 15px;
-        border-radius: 20px;
-        cursor: pointer;
-        font-size: 14px;
-      }
-      .filter-btn.active {
-        background: #000;
-        color: white;
+
+      /* 모바일 반응형 */
+      @media (max-width: 768px) {
+        .container {
+          flex-direction: column;
+        }
+        .sidebar {
+          width: 100%;
+          border-right: none;
+          border-bottom: 1px solid #eee;
+          padding: 15px;
+        }
+        .nav-main {
+          display: none; /* 모바일에서는 햄버거 메뉴로 대체 */
+        }
+        .mobile-menu-btn {
+          display: block;
+          background: none;
+          border: none;
+          font-size: 20px;
+          cursor: pointer;
+        }
       }
     </style>
   </head>
   <body>
     <header>
       <div class="logo">BetaHive</div>
-      <nav>
+      <nav class="nav-main">
         <a href="#">프로젝트 탐색</a>
         <a href="#">프로젝트 등록</a>
         <a href="#">내 대시보드</a>
       </nav>
+      <div class="user-actions">
+        <button class="btn-login">로그인</button>
+        <div class="user-avatar">👤</div>
+      </div>
     </header>
 
-    <main>
-      <!-- 필터 바 -->
-      <div class="filter-bar">
-        <button class="filter-btn active">전체</button>
-        <button class="filter-btn">모바일 앱</button>
-        <button class="filter-btn">웹 서비스</button>
-        <button class="filter-btn">보상 있음</button>
-      </div>
+    <div class="container">
+      <!-- 사이드바 -->
+      <aside class="sidebar">
+        <h3>카테고리</h3>
+        <ul class="sidebar-category">
+          <li><a href="#" class="active">전체 프로젝트</a></li>
+          <li><a href="#">모바일 앱</a></li>
+          <li><a href="#">웹 서비스</a></li>
+          <li><a href="#">게임</a></li>
+          <li><a href="#">하드웨어</a></li>
+        </ul>
 
-      <!-- 프로젝트 그리드 -->
-      <div class="project-grid">
-        <!-- 프로젝트 카드 1 -->
-        <div class="project-card">
-          <div class="project-image">📱 앱 스크린샷</div>
-          <div class="project-content">
-            <h3 class="project-title">하루 1분 명상 앱</h3>
-            <p class="project-description">
-              바쁜 일상 속 1분 명상을 도와주는 앱. 현재 UX 개선 피드백 필요!
-            </p>
-            <span class="reward-tag">TOP 3명 커피 기프티콘</span>
-          </div>
+        <h3>필터</h3>
+        <ul class="sidebar-category">
+          <li><a href="#">보상 있는 프로젝트</a></li>
+          <li><a href="#">단기 테스트 (1주일 이내)</a></li>
+          <li><a href="#">피드백 완료 필요</a></li>
+        </ul>
+
+        <h3>내 활동</h3>
+        <ul class="sidebar-category">
+          <li><a href="#">참여 중인 프로젝트</a></li>
+          <li><a href="#">제출한 피드백</a></li>
+          <li><a href="#">받은 보상</a></li>
+        </ul>
+      </aside>
+
+      <!-- 메인 컨텐츠 -->
+      <main class="main-content">
+        <!-- 필터 바 -->
+        <div class="filter-bar">
+          <button class="filter-btn active">전체</button>
+          <button class="filter-btn">모바일 앱</button>
+          <button class="filter-btn">웹 서비스</button>
+          <button class="filter-btn">보상 있음</button>
+          <button class="filter-btn">마감 임박</button>
         </div>
 
-        <!-- 프로젝트 카드 2 -->
-        <div class="project-card">
-          <div class="project-image">💻 웹 스크린샷</div>
-          <div class="project-content">
-            <h3 class="project-title">AI 여행 플래너</h3>
-            <p class="project-description">
-              예산과 취향에 맞춘 여행 계획을 생성해주는 웹 서비스 테스트 중.
-            </p>
-            <span class="reward-tag">참여자 중 5명 치킨 기프티콘</span>
+        <!-- 프로젝트 그리드 -->
+        <div class="project-grid">
+          <!-- 프로젝트 카드 1 -->
+          <div class="project-card">
+            <div class="project-image">📱 앱 스크린샷</div>
+            <div class="project-content">
+              <h3 class="project-title">하루 1분 명상 앱</h3>
+              <p class="project-description">
+                바쁜 일상 속 1분 명상을 도와주는 앱. 현재 UX 개선 피드백 필요!
+              </p>
+              <span class="reward-tag">TOP 3명 커피 기프티콘</span>
+            </div>
           </div>
-        </div>
 
-        <!-- 프로젝트 카드 3 -->
-        <div class="project-card">
-          <div class="project-image">🎮 게임 스크린샷</div>
-          <div class="project-content">
-            <h3 class="project-title">픽셀 아트 퍼즐 게임</h3>
-            <p class="project-description">
-              새로 개발한 캐주얼 게임의 난이도 조절 피드백을 받고 싶어요.
-            </p>
-            <!-- 보상 없을 경우 태그 생략 -->
+          <!-- 프로젝트 카드 2 -->
+          <div class="project-card">
+            <div class="project-image">💻 웹 스크린샷</div>
+            <div class="project-content">
+              <h3 class="project-title">AI 여행 플래너</h3>
+              <p class="project-description">
+                예산과 취향에 맞춘 여행 계획을 생성해주는 웹 서비스 테스트 중.
+              </p>
+              <span class="reward-tag">참여자 중 5명 치킨 기프티콘</span>
+            </div>
+          </div>
+
+          <!-- 프로젝트 카드 3 -->
+          <div class="project-card">
+            <div class="project-image">🎮 게임 스크린샷</div>
+            <div class="project-content">
+              <h3 class="project-title">픽셀 아트 퍼즐 게임</h3>
+              <p class="project-description">
+                새로 개발한 캐주얼 게임의 난이도 조절 피드백을 받고 싶어요.
+              </p>
+              <!-- 보상 없을 경우 태그 생략 -->
+            </div>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </div>
+
+    <script>
+      // 간단한 사이드바 토글 기능 (실제 구현시 더 복잡한 로직 필요)
+      document
+        .querySelector(".user-avatar")
+        .addEventListener("click", function () {
+          document
+            .querySelector(".sidebar")
+            .classList.toggle("sidebar-collapsed");
+        });
+    </script>
   </body>
 </html>
