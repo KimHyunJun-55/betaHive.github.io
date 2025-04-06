@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BetaHive | 사이드 프로젝트 테스팅 플랫폼</title>
+    <style>
+      /* Disquiet-inspired Minimal Style */
+      body {
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: #f9f9f9;
+        margin: 0;
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      header {
+        border-bottom: 1px solid #eee;
+        padding: 20px 0;
+        margin-bottom: 40px;
+      }
+      .logo {
+        font-size: 24px;
+        font-weight: 700;
+        color: #000;
+      }
+      .project-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 25px;
+      }
+      .project-card {
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s;
+      }
+      .project-card:hover {
+        transform: translateY(-5px);
+      }
+      .project-image {
+        height: 160px;
+        background: #f0f0f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #999;
+      }
+      .project-content {
+        padding: 20px;
+      }
+      .project-title {
+        font-size: 18px;
+        margin: 0 0 10px;
+      }
+      .project-description {
+        color: #666;
+        font-size: 14px;
+        margin-bottom: 15px;
+      }
+      .reward-tag {
+        display: inline-block;
+        background: #f0f7ff;
+        color: #0066ff;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        margin-top: 10px;
+      }
+      .filter-bar {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 30px;
+      }
+      .filter-btn {
+        background: none;
+        border: 1px solid #ddd;
+        padding: 8px 15px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      .filter-btn.active {
+        background: #000;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">BetaHive</div>
+      <nav>
+        <a href="#">프로젝트 탐색</a>
+        <a href="#">프로젝트 등록</a>
+        <a href="#">내 대시보드</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- 필터 바 -->
+      <div class="filter-bar">
+        <button class="filter-btn active">전체</button>
+        <button class="filter-btn">모바일 앱</button>
+        <button class="filter-btn">웹 서비스</button>
+        <button class="filter-btn">보상 있음</button>
+      </div>
+
+      <!-- 프로젝트 그리드 -->
+      <div class="project-grid">
+        <!-- 프로젝트 카드 1 -->
+        <div class="project-card">
+          <div class="project-image">📱 앱 스크린샷</div>
+          <div class="project-content">
+            <h3 class="project-title">하루 1분 명상 앱</h3>
+            <p class="project-description">
+              바쁜 일상 속 1분 명상을 도와주는 앱. 현재 UX 개선 피드백 필요!
+            </p>
+            <span class="reward-tag">TOP 3명 커피 기프티콘</span>
+          </div>
+        </div>
+
+        <!-- 프로젝트 카드 2 -->
+        <div class="project-card">
+          <div class="project-image">💻 웹 스크린샷</div>
+          <div class="project-content">
+            <h3 class="project-title">AI 여행 플래너</h3>
+            <p class="project-description">
+              예산과 취향에 맞춘 여행 계획을 생성해주는 웹 서비스 테스트 중.
+            </p>
+            <span class="reward-tag">참여자 중 5명 치킨 기프티콘</span>
+          </div>
+        </div>
+
+        <!-- 프로젝트 카드 3 -->
+        <div class="project-card">
+          <div class="project-image">🎮 게임 스크린샷</div>
+          <div class="project-content">
+            <h3 class="project-title">픽셀 아트 퍼즐 게임</h3>
+            <p class="project-description">
+              새로 개발한 캐주얼 게임의 난이도 조절 피드백을 받고 싶어요.
+            </p>
+            <!-- 보상 없을 경우 태그 생략 -->
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
