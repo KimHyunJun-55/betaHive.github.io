@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>하루 1분 명상 앱 | BetaHive</title>
+    <style>
+      /* 공통 스타일 (메인 페이지와 동일) */
+      body {
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: #f9f9f9;
+        margin: 0;
+        padding: 20px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      header {
+        border-bottom: 1px solid #eee;
+        padding: 20px 0;
+        margin-bottom: 30px;
+      }
+      .logo {
+        font-size: 24px;
+        font-weight: 700;
+      }
+
+      /* 상세페이지 전용 스타일 */
+      .project-header {
+        display: flex;
+        gap: 30px;
+        margin-bottom: 40px;
+      }
+      .project-screenshots {
+        flex: 1;
+        background: #f0f0f0;
+        min-height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+      }
+      .project-meta {
+        flex: 1;
+      }
+      .project-title {
+        font-size: 28px;
+        margin: 0 0 10px;
+      }
+      .project-category {
+        display: inline-block;
+        background: #eee;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 14px;
+        margin-bottom: 15px;
+      }
+      .reward-box {
+        background: #f0f7ff;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px 0;
+      }
+      .reward-title {
+        font-weight: 600;
+        margin: 0 0 10px;
+        color: #0066ff;
+      }
+      .btn-apply {
+        background: #0066ff;
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 30px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+      .section-title {
+        font-size: 20px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10px;
+        margin: 40px 0 20px;
+      }
+      .project-description {
+        line-height: 1.8;
+        margin-bottom: 30px;
+      }
+      .feedback-form {
+        background: white;
+        border-radius: 8px;
+        padding: 25px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      label {
+        display: block;
+        font-weight: 500;
+        margin-bottom: 8px;
+      }
+      textarea,
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-family: inherit;
+      }
+      textarea {
+        min-height: 120px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">BetaHive</div>
+      <nav>
+        <a href="#">← 프로젝트 목록으로</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- 프로젝트 헤더 (이미지 + 기본 정보) -->
+      <div class="project-header">
+        <div class="project-screenshots">
+          📱 앱 스크린샷 갤러리 (슬라이드 형태)
+        </div>
+        <div class="project-meta">
+          <span class="project-category">모바일 앱 • 건강</span>
+          <h1 class="project-title">하루 1분 명상 앱</h1>
+          <p>개발자: <strong>@dev_username</strong></p>
+          <p>테스트 기간: <strong>2023.11.01 ~ 2023.11.15</strong></p>
+
+          <!-- 보상 박스 -->
+          <div class="reward-box">
+            <h3 class="reward-title">🏆 참여 보상</h3>
+            <p>
+              유용한 피드백을 남긴 <strong>TOP 3명</strong>에게<br />스타벅스
+              아메리카노 기프티콘을 드립니다!
+            </p>
+            <button class="btn-apply">테스터로 참여하기</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 프로젝트 상세 설명 -->
+      <h2 class="section-title">🔍 프로젝트 소개</h2>
+      <div class="project-description">
+        <p>
+          바쁜 현대인을 위한 1분 초단위 명상 앱입니다. 기존 명상 앱들은 시간이
+          너무 길어 진입 장벽이 높았는데, 이 앱은 진동과 시각적 큐로 1분 안에
+          빠르게 집중할 수 있도록 도와줍니다.
+        </p>
+        <p><strong>테스트 목표:</strong></p>
+        <ul>
+          <li>UI/UX 전반적인 사용성 평가</li>
+          <li>명상 종료 후 피드백 팝업의 효과성 검증</li>
+          <li>앱 실행 유도 푸시 알림 적절성 확인</li>
+        </ul>
+      </div>
+
+      <!-- 테스터 가이드라인 -->
+      <h2 class="section-title">📋 테스트 방법</h2>
+      <div class="project-description">
+        <ol>
+          <li>아래 링크에서 앱 설치 (TestFlight 또는 APK)</li>
+          <li>3일 동안 최소 2회 이상 명상 시도</li>
+          <li>발견한 버그 또는 개선사항을 폼에 작성</li>
+        </ol>
+        <p><a href="#">🔗 테스트 앱 다운로드 링크</a></p>
+      </div>
+
+      <!-- 피드백 작성 폼 -->
+      <h2 class="section-title">💬 피드백 남기기</h2>
+      <div class="feedback-form">
+        <div class="form-group">
+          <label>별점 평가</label>
+          <div>⭐⭐⭐⭐⭐ (5점 만점)</div>
+        </div>
+        <div class="form-group">
+          <label>발견한 버그 (선택 사항)</label>
+          <input
+            type="text"
+            placeholder="예: 홈 화면에서 뒤로 가기 버튼이 작동하지 않음"
+          />
+        </div>
+        <div class="form-group">
+          <label>UX 개선 제안 (필수)</label>
+          <textarea
+            placeholder="예: 명상 종료 시 효과음이 너무 갑작스러워요. 점점 약해지는 효과가 있으면 좋을 것 같습니다."
+          ></textarea>
+        </div>
+        <button class="btn-apply">피드백 제출하기</button>
+      </div>
+    </main>
+  </body>
+</html>
